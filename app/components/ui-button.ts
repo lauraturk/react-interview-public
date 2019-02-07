@@ -13,7 +13,6 @@ export default class UiButton extends Component {
   // TODO: remove preventDefault here and see the reset button submit the form
   @action
   click(e) {
-    debugger;
     e.preventDefault();
     if (this.task) {
       this.task.perform();
@@ -30,7 +29,8 @@ export default class UiButton extends Component {
 
   // Template
   // ---------------------------------------------------------------------------
+  // TEST use <button type={{type}} onClick={{action 'click'}}>{{yield}}</button> and have it fire twice
   layout = hbs`
-    <button type={{type}} onClick={{action 'click'}}>{{yield}}</button>
+    <button type={{type}}>{{yield}}</button>
   `;
 }

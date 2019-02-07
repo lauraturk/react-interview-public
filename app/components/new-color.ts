@@ -15,13 +15,11 @@ export default class NewColor extends Component {
   // ---------------------------------------------------------------------------
   addCallback: Callback = () => undefined;
 
-  // Internal properties
-  // ---------------------------------------------------------------------------
-  name: string = "";
-
   @action
   save() {
-    console.log("saving form");
+    this.addCallback({ name: this.name, color: this.color, stars: 0 });
+    this.set("name", "");
+    this.set("color", "");
   }
 
   @action
@@ -30,15 +28,20 @@ export default class NewColor extends Component {
     this.set("name", "");
   }
 
+  // Internal properties
+  // ---------------------------------------------------------------------------
+  name: string = "";
+  color: string = "";
+
   layout = hbs`
-    {{#ui-form onSubmit=(action "save") as |form|}}
+    {{#ui-form onSubmit=(action 'save') as |form|}}
       {{#form.label}}Color name:{{/form.label}}
-      {{form.input placeholder="my cool color" value=name}}
+      {{form.input placeholder='my cool color' value=name}}
 
       {{#form.label}}Color:{{/form.label}}
-      {{form.input type="color"}}
+      {{form.input value=color type='color'}}
 
-      {{#ui-button onClick=(action "reset")}}Reset{{/ui-button}}
+      {{#ui-button onClick=(action 'reset')}}Reset{{/ui-button}}
 
       {{#form.submit}}Save{{/form.submit}}
     {{/ui-form}}

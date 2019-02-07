@@ -1,11 +1,12 @@
-import { action } from '@ember-decorators/object'
-import Controller from '@ember/controller'
+import { action } from "@ember-decorators/object";
+import Controller from "@ember/controller";
 
 export default class Domains extends Controller {
   // Actions
   // ---------------------------------------------------------------------------
   @action
-  addColor() {
-    console.log('adding a color...')
+  addColor(value) {
+    console.log("adding a color...", value);
+    this.model.pushObject(value);
   }
 }
