@@ -1,20 +1,5 @@
-# unconventional js
-/blueprints/*/files/
-/vendor/
-
-# compiled output
+/blueprints/*/files/**/*.js
 /dist/
-/tmp/
-
-# dependencies
-/bower_components/
 /node_modules/
-
-# misc
-/coverage/
-!.*
-
-# ember-try
-/.node_modules.ember-try/
-/bower.json.ember-try
-/package.json.ember-try
+/vendor/
+!.eslintrc.js
