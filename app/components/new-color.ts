@@ -1,3 +1,4 @@
+import { action } from "@ember-decorators/object";
 import hbs from "htmlbars-inline-precompile";
 import Component from "@ember/component";
 
@@ -14,11 +15,32 @@ export default class NewColor extends Component {
   // ---------------------------------------------------------------------------
   addCallback: Callback = () => undefined;
 
+  // Internal properties
+  // ---------------------------------------------------------------------------
+  name: string = "";
+
+  @action
+  save() {
+    console.log("saving form");
+  }
+
+  @action
+  reset() {
+    // TODO: use this.name = ""
+    this.set("name", "");
+  }
+
   layout = hbs`
-    <form>
-      <h1>name: {{card.name}}</h1>
-      <h1>color: {{card.color}}</h1>
-      <h1>stars: {{card.stars}}</h1>
-    </form>
+    {{#ui-form onSubmit=(action "save") as |form|}}
+      {{#form.label}}Color name:{{/form.label}}
+      {{form.input placeholder="my cool color" value=name}}
+
+      {{#form.label}}Color:{{/form.label}}
+      {{form.input type="color"}}
+
+      {{#ui-button onClick=(action "reset")}}Reset{{/ui-button}}
+
+      {{#form.submit}}Save{{/form.submit}}
+    {{/ui-form}}
   `;
 }
