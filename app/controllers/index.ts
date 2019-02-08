@@ -1,6 +1,7 @@
 import { action } from "@ember-decorators/object";
 import { Card } from "../../types/ember-colorpalette/card";
 import Controller from "@ember/controller";
+import { set } from "@ember/object";
 
 export default class Domains extends Controller {
   // Actions
@@ -17,5 +18,10 @@ export default class Domains extends Controller {
       null
     );
     this.model.removeAt(index);
+  }
+
+  @action
+  voteOnColor(value: Card, vote: number) {
+    set(this.model, "0.stars", vote);
   }
 }
