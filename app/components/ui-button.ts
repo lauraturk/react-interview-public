@@ -1,8 +1,9 @@
-import hbs from "htmlbars-inline-precompile";
+// import hbs from "htmlbars-inline-precompile";
 import Component from "@ember/component";
 import { action } from "@ember-decorators/object";
+import { tagName, attribute } from "@ember-decorators/component";
 
-// TODO: Tagname= ''
+@tagName("button")
 export default class UiButton extends Component {
   // Callbacks
   // ---------------------------------------------------------------------------
@@ -21,16 +22,9 @@ export default class UiButton extends Component {
       this.onClick();
     }
   }
+  @attribute type = "button";
 
   // Passed properties
   // ---------------------------------------------------------------------------
-  type: string = "button";
   task = null;
-
-  // Template
-  // ---------------------------------------------------------------------------
-  // TEST use <button type={{type}} onClick={{action 'click'}}>{{yield}}</button> and have it fire twice
-  layout = hbs`
-    <button type={{type}}>{{yield}}</button>
-  `;
 }

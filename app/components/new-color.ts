@@ -35,15 +35,20 @@ export default class NewColor extends Component {
 
   layout = hbs`
     {{#ui-form onSubmit=(action 'save') as |form|}}
-      {{#form.label}}Color name:{{/form.label}}
-      {{form.input placeholder='my cool color' value=name}}
+      <section>
+        {{#form.label}}Color name:{{/form.label}}
+        {{form.input placeholder='my cool color' value=name}}
+      </section>
 
-      {{#form.label}}Color:{{/form.label}}
-      {{form.input value=color type='color'}}
+      <section>
+        {{#form.label}}Color:{{/form.label}}
+        {{form.input value=color type='color'}}
+      </section>
 
-      {{#ui-button onClick=(action 'reset')}}Reset{{/ui-button}}
-
-      {{#form.submit}}Save{{/form.submit}}
+      <section>
+        {{#ui-button onClick=(action 'reset')}}Reset{{/ui-button}}
+        {{#form.submit}}Save{{/form.submit}}
+      </section>
     {{/ui-form}}
   `;
 }
