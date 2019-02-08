@@ -1,23 +1,17 @@
+import { Card, CardCallback } from "../../types/ember-colorpalette/card";
 import { action } from "@ember-decorators/object";
 import hbs from "htmlbars-inline-precompile";
 import Component from "@ember/component";
 
-interface Card {
-  name: string;
-  color: string;
-  stars: number;
-}
-
-type Callback = (card: Card) => undefined;
-
 export default class NewColor extends Component {
   // Passed properties
   // ---------------------------------------------------------------------------
-  addCallback: Callback = () => undefined;
+  addCallback: CardCallback = () => undefined;
 
   @action
   save() {
-    this.addCallback({ name: this.name, color: this.color, stars: 0 });
+    const card: Card = { name: this.name, color: this.color, stars: 0 };
+    this.addCallback(card);
     this.set("name", "");
     this.set("color", "");
   }
@@ -34,19 +28,19 @@ export default class NewColor extends Component {
   color: string = "";
 
   layout = hbs`
-    {{#ui-form onSubmit=(action 'save') as |form|}}
+    {{#ui-form onSubmit=(action "save") as |form|}}
       <section>
         {{#form.label}}Color name:{{/form.label}}
-        {{form.input placeholder='my cool color' value=name}}
+        {{form.input placeholder="my cool color" value=name}}
       </section>
 
       <section>
         {{#form.label}}Color:{{/form.label}}
-        {{form.input value=color type='color'}}
+        {{form.input value=color type="color"}}
       </section>
 
       <section>
-        {{#ui-button onClick=(action 'reset')}}Reset{{/ui-button}}
+        {{#ui-button onClick=(action "reset")}}Reset{{/ui-button}}
         {{#form.submit}}Save{{/form.submit}}
       </section>
     {{/ui-form}}
