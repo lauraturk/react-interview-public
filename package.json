@@ -54,6 +54,7 @@
     "ember-resolver": "^5.0.1",
     "ember-source": "~3.7.0",
     "ember-template-lint": "^1.1.0",
+    "ember-truth-helpers": "^2.1.0",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-ember": "^5.4.0",
     "eslint-plugin-hbs": "^0.1.1",

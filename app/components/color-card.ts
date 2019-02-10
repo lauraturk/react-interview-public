@@ -15,11 +15,18 @@ export default class ColorCard extends Component {
   @computed("card.color")
   @attribute
   get style() {
-    return `background-color: ${this.card.color};`;
+    // Make the decision if this is a "light" or a "dark" color
+    const color = "white";
+    return `background-color: ${this.card.color}; color: ${color};`;
   }
 
   // Actions
   // ---------------------------------------------------------------------------
+  @action
+  editColor() {
+    this.set("isEditing", !this.isEditing);
+  }
+
   @action
   deleteCard() {
     console.log("card wants to delete");
@@ -37,14 +44,24 @@ export default class ColorCard extends Component {
   votingCallback: VotingCallback = () => undefined;
   card: Card = null;
 
+  // Internal properties
+  // ---------------------------------------------------------------------------
+  isEditing: boolean = false;
+
+  // TODO: click on the text field to edit the text value directly
+  // Template
+  // ---------------------------------------------------------------------------
   layout = hbs`
     <section class="{{styleNamespace}}__main">
       <h1>name: {{card.name}}</h1>
-      <p>color: {{card.color}}</p>
+      <section class="{{styleNamespace}}__colorField">
+        <p>color: {{card.color}}</p>
+        {{input value=card.color type="color"}}
+      </section>
       <Stars @stars={{card.stars}} @votingCallback={{action "voteOnCard"}}/>
     </section>
     <section class="{{styleNamespace}}__actions">
-      {{#ui-button onClick=(action "deleteCard")}}Delete{{/ui-button}}
+      <UiButton @onClick={{action "deleteCard"}}>Delete</UiButton>
     </section>
   `;
 }

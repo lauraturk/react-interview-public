@@ -16,6 +16,11 @@
     flex-direction: column;
   }
 
+  &__colorField {
+    display: flex;
+    flex-direction: row;
+  }
+
   &__actions {
     display: flex;
     flex-direction: column;
