@@ -7,12 +7,12 @@ export default class Domains extends Controller {
   // Actions
   // ---------------------------------------------------------------------------
   @action
-  addColor(value: Card) {
+  public addColor(value: Card) {
     this.model.pushObject(value);
   }
 
   @action
-  deleteColor(value: Card) {
+  public deleteColor(value: Card) {
     const index = this.model.reduce(
       (memo, card, idx) => (memo = card.name === value.name ? idx : memo),
       null
@@ -21,7 +21,7 @@ export default class Domains extends Controller {
   }
 
   @action
-  voteOnColor(value: Card, vote: number) {
+  public voteOnColor(value: Card, vote: number) {
     set(this.model, "0.stars", vote);
   }
 }

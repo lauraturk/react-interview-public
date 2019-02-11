@@ -16,31 +16,30 @@ export default class UiButton extends Component {
     return `background-color: ${this.backgroundColor}; color: ${this.color};`;
   }
 
+  // Passed properties
+  // ---------------------------------------------------------------------------
+  public backgroundColor: string = DEFAULT_BLUE;
+  public color: string = "#fff";
+  @attribute public type = "button";
+
+  // Passed properties
+  // ---------------------------------------------------------------------------
+  public task = null;
+
   // Callbacks
   // ---------------------------------------------------------------------------
-  onClick = () => undefined;
+  public onClick = () => undefined;
 
   // Actions
   // ---------------------------------------------------------------------------
   // TODO: remove preventDefault here and see the reset button submit the form
   @action
-  click(e) {
+  public click(e) {
     e.preventDefault();
     if (this.task) {
       this.task.perform();
     } else {
-      console.log("calling ui-button onClick method...");
       this.onClick();
     }
   }
-
-  // Passed properties
-  // ---------------------------------------------------------------------------
-  backgroundColor: string = DEFAULT_BLUE;
-  color: string = "#fff";
-  @attribute type = "button";
-
-  // Passed properties
-  // ---------------------------------------------------------------------------
-  task = null;
 }

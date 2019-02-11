@@ -54,39 +54,15 @@ export default class ColorCard extends Component {
   get buttonBackgroundColor() {
     return brightness(this.card.color) > 0.5 ? "#000000aa" : "#ffffffaa";
   }
-
-  // Actions
-  // ---------------------------------------------------------------------------
-  @action
-  editColor() {
-    this.set("isEditing", !this.isEditing);
-  }
-
-  @action
-  deleteCard() {
-    console.log("card wants to delete");
-    this.deleteCallback(this.card);
-  }
-
-  @action
-  voteOnCard(value: number) {
-    this.votingCallback(this.card, value);
-  }
-
-  // Passed properties
-  // ---------------------------------------------------------------------------
-  deleteCallback: CardCallback = () => undefined;
-  votingCallback: VotingCallback = () => undefined;
-  card: Card = null;
+  public card: Card = null;
 
   // Internal properties
   // ---------------------------------------------------------------------------
-  isEditing: boolean = false;
+  public isEditing: boolean = false;
 
-  // TODO: click on the text field to edit the text value directly
   // Template
   // ---------------------------------------------------------------------------
-  layout = hbs`
+  public layout = hbs`
     <section class="{{styleNamespace}}__main">
       <h1>name: {{card.name}}</h1>
       <section class="{{styleNamespace}}__colorField">
@@ -99,4 +75,26 @@ export default class ColorCard extends Component {
       <UiButton @backgroundColor={{buttonBackgroundColor}} @color={{buttonColor}} @onClick={{action "deleteCard"}}>Delete</UiButton>
     </section>
   `;
+
+  // Actions
+  // ---------------------------------------------------------------------------
+  @action
+  public editColor() {
+    this.set("isEditing", !this.isEditing);
+  }
+
+  @action
+  public deleteCard() {
+    this.deleteCallback(this.card);
+  }
+
+  @action
+  public voteOnCard(value: number) {
+    this.votingCallback(this.card, value);
+  }
+
+  // Passed properties
+  // ---------------------------------------------------------------------------
+  public deleteCallback: CardCallback = () => undefined;
+  public votingCallback: VotingCallback = () => undefined;
 }
