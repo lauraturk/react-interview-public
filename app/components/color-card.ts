@@ -45,6 +45,16 @@ export default class ColorCard extends Component {
     return `background-color: ${this.card.color}; color: ${color};`;
   }
 
+  @computed("card.color")
+  get buttonColor() {
+    return brightness(this.card.color) > 0.5 ? "white" : "black";
+  }
+
+  @computed("card.color")
+  get buttonBackgroundColor() {
+    return brightness(this.card.color) > 0.5 ? "#000000aa" : "#ffffffaa";
+  }
+
   // Actions
   // ---------------------------------------------------------------------------
   @action
@@ -86,7 +96,7 @@ export default class ColorCard extends Component {
       <Stars @stars={{card.stars}} @votingCallback={{action "voteOnCard"}}/>
     </section>
     <section class="{{styleNamespace}}__actions">
-      <UiButton @backgroundColor="red" @color="green" @onClick={{action "deleteCard"}}>Delete</UiButton>
+      <UiButton @backgroundColor={{buttonBackgroundColor}} @color={{buttonColor}} @onClick={{action "deleteCard"}}>Delete</UiButton>
     </section>
   `;
 }
