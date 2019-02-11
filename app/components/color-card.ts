@@ -86,7 +86,7 @@ export default class ColorCard extends Component {
       <Stars @stars={{card.stars}} @votingCallback={{action "voteOnCard"}}/>
     </section>
     <section class="{{styleNamespace}}__actions">
-      <UiButton @onClick={{action "deleteCard"}}>Delete</UiButton>
+      <UiButton @backgroundColor="red" @color="green" @onClick={{action "deleteCard"}}>Delete</UiButton>
     </section>
   `;
 }
