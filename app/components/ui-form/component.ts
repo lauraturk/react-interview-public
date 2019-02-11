@@ -23,7 +23,7 @@ export default class UiForm extends Component {
     {{yield (hash
       label=(component 'ui-form/label')
       input=(component 'ui-form/input')
-      submit=(component 'ui-button' onClick=onSubmit type='submit')
+      submit=(component 'ui-button' id="submit" onClick=onSubmit type='submit')
     )}}
   `;
 }

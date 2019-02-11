@@ -18,7 +18,6 @@ export default class NewColor extends Component {
 
   @action
   reset() {
-    // TODO: use this.name = ""
     this.set("name", "");
   }
 
@@ -36,7 +35,7 @@ export default class NewColor extends Component {
 
       <section>
         {{#form.label}}Color:{{/form.label}}
-        {{form.input value=color type="color"}}
+        {{form.input id="color-input" value=color type="color"}}
       </section>
 
       <section>
