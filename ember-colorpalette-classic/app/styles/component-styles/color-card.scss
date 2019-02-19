@@ -1,0 +1,34 @@
+& {
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  border-color: #034609;
+  border-width: 1px;
+  border-radius: 3px;
+  border-style: solid;
+  margin: 20px;
+  padding: 10px;
+  height: 180px;
+  max-width: 300px;
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__colorField {
+    display: flex;
+    flex-direction: row;
+
+    input {
+      margin-left: 20px;
+      margin-top: 11px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+}
