@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { v4 } from 'uuid'
 import AddColorForm from './AddColorForm'
 import ColorList from './ColorList'
-// import '../../stylesheets/APP.scss'
+// import './stylesheets/APP.scss'
 
 class App extends Component {
   constructor (props) {
@@ -35,9 +35,9 @@ class App extends Component {
         (color.id !== id)
           ? color
           : {
-            ...color,
-            rating
-          }
+              ...color,
+              rating
+            }
       )
     }))
   }
@@ -54,9 +54,11 @@ class App extends Component {
     return (
       <div className='app'>
         <AddColorForm onNewColor={addColor} />
-        <ColorList colors={colors}
+        <ColorList
+          colors={colors}
           onRate={rateColor}
-          onRemove={removeColor} />
+          onRemove={removeColor}
+        />
       </div>
     )
   }

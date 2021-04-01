@@ -30,8 +30,10 @@ export default class Color extends Component {
       <section className='color'>
         <h1>{this.props.title}</h1>
         <button onClick={this.props.onRemove}>X</button>
-        <div className='color'
-          style={{ backgroundColor: this.props.color }} />
+        <div
+          className='color'
+          style={{ backgroundColor: this.props.color }}
+        />
         <div>
           <StarRating starsSelected={this.props.rating} onRate={this.props.onRate} />
         </div>

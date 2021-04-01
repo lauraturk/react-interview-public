@@ -22,9 +22,11 @@ export default class StarRating extends Component {
     return (
       <div className='star-rating'>
         {[...Array(this.props.totalStars)].map((n, i) =>
-          <Star key={i}
+          <Star
+            key={i}
             selected={i < this.props.starsSelected} // TODO: EXPLAIN THIS.
-            onClick={() => this.props.onRate(i + 1)} />
+            onClick={() => this.props.onRate(i + 1)}
+          />
         )}
         <p>{this.props.starsSelected} of {this.props.totalStars} stars</p>
       </div>
