@@ -1,64 +1,59 @@
-import React, { Component } from 'react'
-import { v4 } from 'uuid'
-import AddColorForm from './AddColorForm'
-import ColorList from './ColorList'
+import React, { Component } from "react"
+
+import AddColorForm from "./AddColorForm"
+import ColorList from "./ColorList"
+import { v4 } from "uuid"
 // import './stylesheets/APP.scss'
 
 class App extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
-      colors: []
+      colors: [],
     }
     this.addColor = this.addColor.bind(this)
-    this.rateColor = this.rateColor.bind(this)
-    this.removeColor = this.removeColor.bind(this)
+    this.changeColor = this.changeColor.bind(this)
   }
 
-  addColor (title, color) {
-    this.setState(prevState => ({
+  addColor(title, color) {
+    this.setState((prevState) => ({
       colors: [
         ...prevState.colors,
         {
-          id: v4(),
           title,
           color,
-          rating: 0
-        }
-      ]
+          rating: 0,
+        },
+      ],
     }))
   }
 
-  rateColor (id, rating) {
-    this.setState(prevState => ({
-      colors: prevState.colors.map(color =>
-        (color.id !== id)
+  changeColor(colorTitle, property, newValue) {
+    this.setState((prevState) => ({
+      colors: prevState.colors.map((color) =>
+        color.title !== colorTitle
           ? color
           : {
               ...color,
-              rating
+              [property]: newValue,
             }
-      )
+      ),
     }))
   }
 
-  removeColor (id) {
-    this.setState(prevState => ({
-      colors: prevState.colors.filter(color => color.id !== id)
+  removeColor(colorTitle) {
+    this.setState((prevState) => ({
+      colors: prevState.colors.filter((color) => color.title !== colorTitle),
     }))
   }
 
-  render () {
+  render() {
     const { addColor, rateColor, removeColor } = this
     const { colors } = this.state
     return (
-      <div className='app'>
+      <div className="app">
         <AddColorForm onNewColor={addColor} />
-        <ColorList
-          colors={colors}
-          onRate={rateColor}
-          onRemove={removeColor}
-        />
+        <ColorList colors={colors} onRate={rateColor} onRemove={removeColor} />
       </div>
     )
   }
