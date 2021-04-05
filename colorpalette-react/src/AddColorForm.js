@@ -11,7 +11,6 @@ export default class AddColorForm extends Component {
       title: '',
       color: '#000000'
     }
-    // this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit (e) {
