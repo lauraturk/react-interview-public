@@ -1,11 +1,11 @@
 import StarRating from './StarRating'
-import React, { Component } from 'react'
+import React from 'react'
 // import '../../stylesheets/Color.scss'
 
 import React, { Component } from "react"
 
 
-function brightness(color: string): number {
+const brightness = (color) => {
   // parse card.color into three variables
   // A color string looks like this: #rrbbgg where
   // "rr" represents two hex values indicating the amount
@@ -19,6 +19,7 @@ function brightness(color: string): number {
   const redMultiplier = 77 / 255 // because science
   const blueMultiplier = 150 / 255
   const greenMultiplier = 28 / 255
+  
   return (
     redMultiplier * percentRed +
     blueMultiplier * percentBlue +
@@ -26,32 +27,32 @@ function brightness(color: string): number {
   )
 }
 
-export default class Color extends Component {
-  style() {
-    const color = brightness(this.props.color) > 0.5 ? "black" : "white"
-    return { "background-color": this.props.color, color: color }
-  }
+const Color = () => {
+    const style = () => {
+        const color = brightness(props.color) > 0.5 ? "black" : "white"
+        return { "background-color": props.color, color: color }
+    }
 
-  render() {
     return (
-      <section className="color" style={this.style()}>
-        <h1>{this.props.title}</h1>
+        <section className="color" style={style()}>
+        <h1>{props.title}</h1>
         <div className="close">X</div>
         <p>
-          color: {this.props.color}
+          color: {props.color}
           <input
-            onChange={(e) => this.props.onColorChange(e.target.value)}
-            value={this.props.color}
+            onChange={(e) => props.onColorChange(e.target.value)}
+            value={props.color}
             type="color"
           />
         </p>
         <div>
           <StarRating
-            starsSelected={this.props.rating}
-            onRate={this.props.onRate}
+            starsSelected={props.rating}
+            onRate={props.onRate}
           />
         </div>
       </section>
     )
-  }
 }
+
+export default Color

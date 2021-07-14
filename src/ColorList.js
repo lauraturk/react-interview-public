@@ -1,23 +1,21 @@
+import React, { Component } from "react"
 // import '../stylesheets/ColorList.scss'
 
-import React, { Component } from "react"
-
-
-export default class ColorList extends Component {
-  render () {
+const ColorList = () => {
     return (
-      <div className='color-list'>
-        {(this.props.colors.length === 0)
-          ? <p>No Colors Listed. (Add a Color)</p>
-          : this.props.colors.map(color =>
+        <div className='color-list'>
+        {(props.colors.length === 0)
+            ? <p>No Colors Listed. (Add a Color)</p>
+            : props.colors.map(color =>
             <Color
-              key={color.title}
-              {...color}
-              onRate={(rating) => this.props.onRate(color.title, rating)}
-              onRemove={() => this.props.onRemove(color.title)}
+                key={color.title}
+                {...color}
+                onRate={(rating) => props.onRate(color.title, rating)}
+                onRemove={() => props.onRemove(color.title)}
             />
-          )}
-      </div>
+            )}
+        </div>
     )
-  }
 }
+
+export default ColorList
