@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 // import '../../stylesheets/AddColorForm.scss'
 
-const AddColorForm = () => {
+const AddColorForm = (props) => {
   const [{ title, color }, setColor] = useState({
     title: "",
     color: "#000000",
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     props.onNewColor(title, color);
     setColor({ title: "", color: "#000000" });
   };
 
   return (
-    <form className="add-color" onSubmit={handleSubmit}>
+    <div className="add-color" onSubmit={handleSubmit}>
       <input
         ref={(input) => ({ title: input })}
         type="text"
@@ -23,7 +22,7 @@ const AddColorForm = () => {
       />
       <input ref={(input) => ({ color: input })} type="color" required />
       <button> ADD </button>
-    </form>
+    </div>
   );
 };
 

@@ -9,16 +9,16 @@ const App = () => {
   const [colors, setColorList] = useState([]);
 
   const addColor = (title, color) => {
-    setColorList((prevState) => ({
-      colors: [
-        ...prevState.colors,
+    setColorList(() => {
+      return [
+        ...colors,
         {
           title,
           color,
           rating: 0,
         },
-      ],
-    }));
+    ];
+    });
   };
 
   const changeColor = (colorTitle, property, newValue) => {
@@ -43,7 +43,7 @@ const App = () => {
   return (
     <div className="app">
       <AddColorForm onNewColor={addColor} />
-      <ColorList colors={colors} onRate={rateColor} onRemove={removeColor} />
+      <ColorList colors={colors} onRemove={removeColor} />
     </div>
   );
 };
