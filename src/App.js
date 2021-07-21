@@ -1,12 +1,12 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 
-import AddColorForm from "./AddColorForm"
-import ColorList from "./ColorList"
-import { v4 } from "uuid"
+import AddColorForm from "./AddColorForm";
+import ColorList from "./ColorList";
+import { v4 } from "uuid";
 // import './stylesheets/APP.scss'
 
 const App = () => {
-    const [colors, setColorList] = useState([])
+  const [colors, setColorList] = useState([]);
 
   const addColor = (title, color) => {
     setColorList((prevState) => ({
@@ -18,8 +18,8 @@ const App = () => {
           rating: 0,
         },
       ],
-    }))
-  }
+    }));
+  };
 
   const changeColor = (colorTitle, property, newValue) => {
     setColorList((prevState) => ({
@@ -31,21 +31,21 @@ const App = () => {
               [property]: newValue,
             }
       ),
-    }))
-  }
+    }));
+  };
 
   const removeColor = (colorTitle) => {
     setColorList((prevState) => ({
       colors: prevState.colors.filter((color) => color.title !== colorTitle),
-    }))
-  }
+    }));
+  };
 
-    return (
-      <div className="app">
-        <AddColorForm onNewColor={addColor} />
-        <ColorList colors={colors} onRate={rateColor} onRemove={removeColor} />
-      </div>
-    )
-}
+  return (
+    <div className="app">
+      <AddColorForm onNewColor={addColor} />
+      <ColorList colors={colors} onRate={rateColor} onRemove={removeColor} />
+    </div>
+  );
+};
 
-export default App
+export default App;
