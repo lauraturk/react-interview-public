@@ -1,22 +1,15 @@
-import React, { Component } from "react"
+import React, { useState } from "react";
 
-import AddColorForm from "./AddColorForm"
-import ColorList from "./ColorList"
-import { v4 } from "uuid"
+import AddColorForm from "./AddColorForm";
+import ColorList from "./ColorList";
+import { v4 } from "uuid";
 // import './stylesheets/APP.scss'
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      colors: [],
-    }
-    this.addColor = this.addColor.bind(this)
-    this.changeColor = this.changeColor.bind(this)
-  }
+const App = () => {
+  const [colors, setColorList] = useState([]);
 
-  addColor(title, color) {
-    this.setState((prevState) => ({
+  const addColor = (title, color) => {
+    setColorList((prevState) => ({
       colors: [
         ...prevState.colors,
         {
@@ -25,11 +18,11 @@ class App extends Component {
           rating: 0,
         },
       ],
-    }))
-  }
+    }));
+  };
 
-  changeColor(colorTitle, property, newValue) {
-    this.setState((prevState) => ({
+  const changeColor = (colorTitle, property, newValue) => {
+    setColorList((prevState) => ({
       colors: prevState.colors.map((color) =>
         color.title !== colorTitle
           ? color
@@ -38,24 +31,21 @@ class App extends Component {
               [property]: newValue,
             }
       ),
-    }))
-  }
+    }));
+  };
 
-  removeColor(colorTitle) {
-    this.setState((prevState) => ({
+  const removeColor = (colorTitle) => {
+    setColorList((prevState) => ({
       colors: prevState.colors.filter((color) => color.title !== colorTitle),
-    }))
-  }
+    }));
+  };
 
-  render() {
-    const { addColor, rateColor, removeColor } = this
-    const { colors } = this.state
-    return (
-      <div className="app">
-        <AddColorForm onNewColor={addColor} />
-        <ColorList colors={colors} onRate={rateColor} onRemove={removeColor} />
-      </div>
-    )
-  }
-}
-export default App
+  return (
+    <div className="app">
+      <AddColorForm onNewColor={addColor} />
+      <ColorList colors={colors} onRate={rateColor} onRemove={removeColor} />
+    </div>
+  );
+};
+
+export default App;
