@@ -21,3 +21,4 @@ Feature choices
 1. Make the form validate input: must have a name and a non-default color. Disable the submit button.
 1. Add a "reset" button on the form which has different styling than the submit button.
 1. Write tests
+
