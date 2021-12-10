@@ -2,11 +2,10 @@ Instructions for the person taking the test:
 
 ## Fixing the current system
 
-1. Make sure you have checked out the `main` branch and that there are no outstanding changes.
 1. Review `demo.mov` in the proper subdirectory to see how the system is supposed to behave.
-1. Install dependencies and start the development server and see how the system _currently_ behaves.
-1. Run the automated tests. Do they pass?
-1. There are many things wrong with the system as compared to the demo. Please fix them.
+2. Install dependencies (npm) and start the development server and see how the system _currently_ behaves.
+3. Run the automated tests. Do they pass?
+4. There are many things wrong with the system as compared to the demo. Please fix them.
 
 > **Note:** there is likely more work to do here than you have time for and you have multiple independent things wrong and can start wherever you like. The interviewer will likely stop you before you're finished in order to ask you other questions.
 
