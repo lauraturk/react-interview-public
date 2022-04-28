@@ -9,9 +9,9 @@ const App = () => {
   const [colors, setColorList] = useState([]);
 
   const addColor = (title, color) => {
-    setColorList((prevState) => ({
+    setColorList(() => ({
       colors: [
-        ...prevState.colors,
+        ...colors,
         {
           title,
           color,
@@ -43,7 +43,7 @@ const App = () => {
   return (
     <div className="app">
       <AddColorForm onNewColor={addColor} />
-      <ColorList colors={colors} onRate={rateColor} onRemove={removeColor} />
+      <ColorList colors={colors} onRemove={removeColor} />
     </div>
   );
 };
