@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 // import '../stylesheets/ColorList.scss'
 
-const ColorList = () => {
+const ColorList = ({ colors }) => {
   return (
     <div className="color-list">
-      {props.colors.length === 0 ? (
+      {colors.length === 0 ? (
         <p>No Colors Listed. (Add a Color)</p>
       ) : (
-        props.colors.map((color) => (
+        colors.map((color) => (
           <Color
             key={color.title}
             {...color}
