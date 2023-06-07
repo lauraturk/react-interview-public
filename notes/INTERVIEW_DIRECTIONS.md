@@ -1,5 +1,7 @@
 # General directions for the interviewer
 
+Note: This rubric and exercise was adapted for React from Peter Banka's [javascript-interview-exercises](https://github.com/fastly/javascript-interview-exercises/edit/master/notes/INTERVIEW_DIRECTIONS.md)
+
 ## Preparation
 
 Review the github history of the `main` branch. Examine the "fix" branch commits that each have a 🐛 in it. Each of these commits represents a fix that was done which is intended to show the solution to what has broken this project. There are CSS problems, JavaScript logic problems, eventing problems, react-specific problems.
@@ -175,3 +177,4 @@ The rubric is the same for senior engineer as mid-level engineer here because yo
 ### Accessibility
   - **Good**: Buttons should have appropriate labels
   - **Good**: HTML elements that the user is expected to click should be `<button>` objects
+
