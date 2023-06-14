@@ -19,12 +19,12 @@ export default function ColorSelector({
   };
 
   const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     addColor({ name: colorName, hex: colorValue, rating: 0 });
   };
 
-  // @TODO: This isn't calling onSubmit?
   return (
-    <div className="colorSelector" onSubmit={onSubmit}>
+    <form className="colorSelector" onSubmit={onSubmit}>
       <div>
         <label htmlFor="colorName">Color name:</label>
         <input
@@ -50,6 +50,6 @@ export default function ColorSelector({
       <div>
         <button type="submit">Save Color</button>
       </div>
-    </div>
+    </form>
   );
 }

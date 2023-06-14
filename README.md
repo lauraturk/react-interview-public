@@ -17,12 +17,17 @@ If you have time, here are some bonus features you can work on:
 - Add form validation that disables the submit button when the form is empty
 - Add a reset button for the `CardSelector` with different styling from the submit button
 - Write some tests
+- Add sorting of colors by brightness
+- Add ability to save multiple color palettes
+- Save color palettes locally (persist palette between browser refreshes)
+- Add utilities to adjust entire color palette
+- Build a custom color picker
+- Upload an image and build a color palette from it
 
 ### Known bugs
 
 The app is currently not finished. Review the `demo.mov`, play with the application and figure out what needs to be done to complete it. Some of the behavior is currently not working as expected! Here are some of the known issues that need to be resolved:
 
-- The form submission isn't working
 - The text color on cards doesn't have enough contrast (try adding light color, the text should be black!)
 - The color cards are vertical instead of horizontal like the demo
 
