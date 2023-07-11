@@ -1,5 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import ColorCard, { getLegibleTextColor } from "./ColorCard";
+import { getLegibleTextColor } from "../util";
 
 describe("ColorCard", () => {
   it("should return legible text color for a given color", () => {

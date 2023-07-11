@@ -1,25 +1,25 @@
-import { Color } from "../types/colors";
+import { Color } from "../types";
+import { getLegibleTextColor, hexToRgb } from "../util";
 
-export const getLegibleTextColor = (colorHex: string): "white" | "black" => {
-  // @TODO: given a color hex string (e.g. #FF0000) return "white" if the color is dark
-  // and "black" if the color is light
-  return "white";
-};
+interface Props {
+  color: Color;
+}
 
-export default function ColorCard({ color }: { color: Color }) {
+export function ColorCard({ color: { name, hex, rating } }: Props) {
+  const backgroundColor = hex;
+  const contrastingColor = getLegibleTextColor(hex);
+  const color = contrastingColor;
+
+  // @TODO: implement hexToRgb and pass rgb() color to `style` prop.
+  // const color = hexToRgb(contrastingColor);
+
   return (
-    <div
-      className="colorCard"
-      style={{
-        backgroundColor: color.hex,
-        color: getLegibleTextColor(color.hex),
-      }}
-    >
-      <h2>Name: {color.name}</h2>
+    <div className="colorCard" style={{ backgroundColor, color }}>
+      <h2>Name: {name}</h2>
       <p>
-        Color: {color.hex} <input type="color" value={color.hex} />
+        Color: {hex} <input type="color" value={hex} />
       </p>
-      <div>Rating: {color.rating}</div>
+      <div>Rating: {rating}</div>
     </div>
   );
 }

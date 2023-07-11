@@ -1,55 +1,81 @@
 import { useState } from "react";
-import { Color } from "../types/colors";
+import type {
+  ChangeEvent,
+  Dispatch,
+  FormEvent,
+  ReactEventHandler,
+  SetStateAction,
+} from "react";
+
+import type { Color, HexColor } from "../types/colors";
+
 import "./ColorSelector.css";
 
-export default function ColorSelector({
-  addColor,
-}: {
+interface Props<Element = HTMLElement> {
   addColor: (color: Color) => void;
-}) {
-  const [colorName, setColorName] = useState("");
-  const [colorValue, setColorValue] = useState("#000000");
+  onSubmit?: ReactEventHandler<Element>;
+}
 
-  const onColorHexChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setColorValue(e.target.value);
-  };
+export function ColorSelector({ addColor, onSubmit: doSubmit }: Props) {
+  const [name, setName] = useState("");
 
-  const onColorNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setColorName(e.target.value);
-  };
+  // @TODO: augment `hex` state to support multiple color formats.
+  const [hex, setHex] = useState<HexColor>("#000000");
 
-  const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    addColor({ name: colorName, hex: colorValue, rating: 0 });
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    doSubmit?.(event);
+    addColor({ name, hex, rating: 0 });
   };
 
   return (
+    // @TODO: re-implement without `form` element and `onSubmit` method.
     <form className="colorSelector" onSubmit={onSubmit}>
-      <div>
-        <label htmlFor="colorName">Color name:</label>
-        <input
-          className="colorName"
-          id="colorName"
-          name="colorName"
-          type="text"
-          onChange={onColorNameChange}
-          required
-          placeholder="Enter a unique color name"
-          minLength={1}
-        />
-      </div>
-      <div>
-        <label htmlFor="color">Color:</label>
-        <input
-          name="color"
-          id="color"
-          type="color"
-          onChange={onColorHexChange}
-        />
-      </div>
+      <Name update={setHex} />
+      <Color update={setName} />
       <div>
         <button type="submit">Save Color</button>
       </div>
     </form>
+  );
+}
+
+interface Update {
+  // @TODO: implement stricter type than `any`.
+  update: Dispatch<SetStateAction<any>>;
+}
+
+function Name({ update }: Update) {
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    update(event.target.value);
+  };
+
+  return (
+    <div>
+      <label htmlFor="colorName">Color name:</label>
+      <input
+        className="colorName"
+        id="colorName"
+        name="colorName"
+        type="text"
+        onChange={onChange}
+        required
+        placeholder="Enter a unique color name"
+        minLength={1}
+      />
+    </div>
+  );
+}
+
+function Color({ update }: Update) {
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    update(event.target.value);
+  };
+
+  return (
+    <div>
+      <label htmlFor="color">Color:</label>
+      <input name="color" id="color" type="color" onChange={onChange} />
+    </div>
   );
 }
