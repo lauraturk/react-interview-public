@@ -1,14 +1,9 @@
-import { ComponentProps, ReactElement, useState } from "react";
+import { useState } from "react";
 
 import { ColorCard, ColorSelector } from "./components";
 import { Color } from "./types";
 
 import "./App.css";
-
-// import { ColorPalette } from "./components/ColorPalette";
-
-// type ColorCardProps = ComponentProps<typeof ColorCard>;
-// type ColorCardChildren = ReactElement<{ color: Color }>[];
 
 function App() {
   const [colors, setColors] = useState<Color[]>([]);

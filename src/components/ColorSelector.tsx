@@ -31,8 +31,8 @@ export function ColorSelector({ addColor, onSubmit: doSubmit }: Props) {
   return (
     // @TODO: re-implement without `form` element and `onSubmit` method.
     <form className="colorSelector" onSubmit={onSubmit}>
-      <Name update={setHex} />
-      <Color update={setName} />
+      <Name update={setName} />
+      <Color update={setHex} />
       <div>
         <button type="submit">Save Color</button>
       </div>
