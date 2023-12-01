@@ -1,4 +1,4 @@
-    # Color Palette Builder
+# Color Palette Builder
 
 The color palette builder application written in React that allows you to
 construct a palette by selecting a color, giving it a name and then hitting
