@@ -4,6 +4,7 @@ import { ColorCard, ColorSelector } from "./components";
 import { Color } from "./types";
 
 import "./App.css";
+import Schemes from "./components/Schemes";
 
 function App() {
   const [colors, setColors] = useState<Color[]>([]);
@@ -27,7 +28,10 @@ function App() {
       <ColorSelector addColor={addColor} />
       <section>
         {colors.map((color) => (
-          <ColorCard key={color.name} color={color} />
+          <div key={color.name} style={{ display: "flex", gap: "10px" }}>
+            <ColorCard color={color} />
+            <Schemes seedColor={color} />
+          </div>
         ))}
       </section>
     </>
