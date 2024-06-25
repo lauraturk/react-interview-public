@@ -36,8 +36,6 @@ application and figure out what needs to be done to complete it. Some of the
 behavior is currently not working as expected! Here are some of the known issues
 that need to be resolved:
 
-- The text color on cards doesn't have enough contrast (try adding light color,
-  the text should be black!)
 - The color cards are vertical instead of horizontal like the demo
 
 If you have time, feel free to refactor any code that you feel could be written
